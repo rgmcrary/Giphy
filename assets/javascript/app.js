@@ -29,7 +29,7 @@ var app = {
 
   newButton: function(movieName) {
     $("#buttons").append(
-      "<button type='button' class='btn btn-default movieBtn' data-movie='" +
+      "<button type='button' class='btn btn-link movieBtn' data-movie='" +
         movieName +
         "'>" +
         movieName +
