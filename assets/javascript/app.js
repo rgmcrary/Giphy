@@ -19,12 +19,14 @@ var app = {
     for (var i = 0; i < movieName.length; i++) {
       app.newButton(movieName[i]);
     }
+    app.setButtonClick();
   },
 
   addBtn: function() {
     var userInput = $("input").val().toLowerCase();
     movieName.push(userInput);
     app.newButton(userInput);
+    app.setButtonClick();
   },
 
   newButton: function(movieName) {
@@ -35,6 +37,10 @@ var app = {
         movieName +
         "</button>"
     );
+  },
+
+  setButtonClick: function() {
+    $(".movieBtn").unbind("click");
     $(".movieBtn").on("click", function(event) {
       var movie = $(this).attr("data-movie");
       app.getGiphy(movie);
@@ -44,6 +50,7 @@ var app = {
   // API Call
 
   getGiphy: function(movie) {
+    $(".results").html(" ");
     var queryURL =
       "https://api.giphy.com/v1/gifs/search?q=" +
       movie +
